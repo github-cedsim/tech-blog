@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, Comment, User } = require('../models');
+const { Post, Comment, User } = require('../models'); 
 
 router.get('/', async (req, res) => {
   try {
@@ -66,5 +66,7 @@ router.get('/signup', (req, res) => {
 
   res.render('signup');
 });
+
+router.get('/favicon.ico', (req, res) => res.status(204).end());
 
 module.exports = router;
