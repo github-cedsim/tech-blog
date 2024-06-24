@@ -1,12 +1,23 @@
-const sequelize = require('./config/connection');
+const { Sequelize } = require('sequelize');
+require('dotenv').config();
 
-sequelize.authenticate()
-  .then(() => {
+const sequelize = new Sequelize(process.env.JAWSDB_URL, {
+  dialect: 'mysql',
+  dialectOptions: {
+    connectTimeout: 60000,
+  },
+  logging: console.log,
+});
+
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
     console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  })
-  .finally(() => {
-    sequelize.close();
-  });
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  } finally {
+    await sequelize.close();
+  }
+}
+
+testConnection();
