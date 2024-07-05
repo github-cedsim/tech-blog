@@ -1,0 +1,36 @@
+{{!-- Extending the main layout --}}
+{{#extend 'main'}}
+
+{{#content 'body'}}
+<div class="app-title">Dashboard</div>
+
+<div class="title-hero">
+    Welcome to your dashboard!
+    <p>Here you can manage your posts and settings.</p>
+</div>
+
+<button class="btn">Create New Post</button>
+
+<div class="dashcard">
+    <div class="card-header">Recent Posts</div>
+    <div class="card-body">
+        <ul>
+            <li>Post 1</li>
+            <li>Post 2</li>
+            <li>Post 3</li>
+        </ul>
+    </div>
+</div>
+
+<div class="dashcard">
+    <div class="card-header">Account Settings</div>
+    <div class="card-body2">
+        <ul>
+            <li>Change Password</li>
+            <li>Update Profile</li>
+            <li>Logout</li>
+        </ul>
+    </div>
+</div>
+{{/content}}
+
