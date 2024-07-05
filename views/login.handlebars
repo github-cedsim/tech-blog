@@ -1,6 +1,16 @@
+
 <h1>Login</h1>
-<form id="login-form">
-  <input type="text" name="username" placeholder="Username">
-  <input type="password" name="password" placeholder="Password">
-  <button type="submit">Login</button>
-</form>
+  <form class="login-form">
+    <div>
+      <label for="username-login">Username:</label>
+      <input type="text" id="username-login" name="username-login" required>
+    </div>
+    <div>
+      <label for="password-login">Password:</label>
+      <input type="password" id="password-login" name="password-login" required>
+    <br>
+    <button type="submit">Log In</button>
+    <br> <a href="/signup">Sign Up Instead</a>
+  </form>
+
+  <script src="/public/js/login.js"></script>
