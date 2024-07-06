@@ -1,29 +1,19 @@
-<div class="post-card">
-  <div class="card-header">
-    <h2>{{title}}</h2>
-    <p>by {{user.username}} on {{createdAt}}</p>
+<main>
+  <h2>{{post.title}}</h2>
+  <p>{{post.content}}</p>
+  <p><small>Posted by {{post.username}} on {{post.createdAt}}</small></p>
+  <div id="comments">
+    {{#each comments}}
+      <div class="comment">
+        <p>{{this.content}}</p>
+        <p><small>Comment by {{this.username}} on {{this.createdAt}}</small></p>
+      </div>
+    {{/each}}
   </div>
-  <div class="card-body">
-    <p>{{content}}</p>
-  </div>
-</div>
-
-<div class="comments-section">
-  <h3>Comments</h3>
-  {{#each comments}}
-  <div class="comment">
-    <p><strong>{{user.username}}</strong> on {{createdAt}}:</p>
-    <p>{{comment_text}}</p>
-  </div>
-  {{/each}}
-  {{#if loggedIn}}
-  <form class="comment-form">
-    <textarea id="comment-text" placeholder="Add a comment" required></textarea>
-    <input type="hidden" id="post-id" value="{{id}}">
-    <button type="submit" class="btn">Submit</button>
-  </form>
-  {{else}}
-  <p>You need to <a href="/login">log in</a> to comment.</p>
+  {{#if logged_in}}
+    <form id="comment-form">
+      <textarea id="comment-content" name="content" placeholder="Add a comment" required></textarea>
+      <button type="submit" class="btn">Submit Comment</button>
+    </form>
   {{/if}}
-</div>
-<script src="/js/comment.js"></script>
+</main>

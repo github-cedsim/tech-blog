@@ -1,23 +1,17 @@
-{{#*inline "content"}}
-  <div class="dashcard">
-    <header class="card-header">
-      <h2 id="blogName">Blog</h2>
-    </header>
+<main>
+  <h2>Dashboard</h2>
+  <div id="post-list">
     {{#each posts}}
-      <div class="card">
-        <div class="card-header">
-          <h2>{{this.title}}</h2>
-        </div>
-        <div class="card-body">
-          <p>{{this.content}}</p>
-          <small>By {{this.user.username}} on {{this.createdAt}}</small>
-          <button class="btn btn-edit" data-id="{{this.id}}">Edit</button>
-          <button class="btn btn-delete" data-id="{{this.id}}">Delete</button>
-        </div>
+      <div class="post">
+        <h3>{{this.title}}</h3>
+        <p>{{this.content}}</p>
+        <p><small>Posted on {{this.createdAt}}</small></p>
       </div>
     {{/each}}
   </div>
-  <a href="/dashboard/new" class="btn">➕ New Post</a>
-{{/inline}}
-
-{{> layouts/main}}
+  <form id="new-post-form">
+    <input type="text" id="post-title" name="title" placeholder="Post Title" required>
+    <textarea id="post-content" name="content" placeholder="Post Content" required></textarea>
+    <button type="submit" class="btn">Create Post</button>
+  </form>
+</main>

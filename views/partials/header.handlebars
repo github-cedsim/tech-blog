@@ -1,0 +1,13 @@
+<!-- views/partials/header.handlebars -->
+<header>
+  <nav>
+    <a href="/">Home</a>
+    {{#if loggedIn}}
+      <a href="/dashboard">Dashboard</a>
+      <a href="/logout">Logout</a>
+    {{else}}
+      <a href="/login">Login</a>
+      <a href="/signup">Signup</a>
+    {{/if}}
+  </nav>
+</header>
