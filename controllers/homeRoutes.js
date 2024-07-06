@@ -1,10 +1,7 @@
-// controllers/homeRoutes.js
-
 const router = require('express').Router();
 const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-// Homepage route
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -21,19 +18,43 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       posts,
       loggedIn: req.session.loggedIn,
+      title: 'Home'
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Dashboard route
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login', { title: 'Login' });
+});
+
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup', { title: 'Sign Up' });
+});
+
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
-        user_id: req.session.user_id,
+        userId: req.session.userId,
       },
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -41,30 +62,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.render('dashboard', {
       posts,
       loggedIn: req.session.loggedIn,
+      title: 'Dashboard'
     });
   } catch (err) {
     res.status(500).json(err);
   }
-});
-
-// Login route
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('login');
-});
-
-// Signup route
-router.get('/signup', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('signup');
 });
 
 module.exports = router;

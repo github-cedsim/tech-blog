@@ -1,15 +1,14 @@
-<!-- views/signup.handlebars -->
-{{#extends 'layouts/main'}}
-{{#content 'body'}}
-<main>
-  <h2>Sign Up</h2>
-  <form id="signup-form">
+{{!-- views/partials/signup.handlebars --}}
+<h2>Sign Up</h2>
+<form id="signup-form">
+  <div>
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" required>
+    <input type="text" id="username" name="username">
+  </div>
+  <div>
     <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-    <button type="submit" class="btn">Sign Up</button>
-  </form>
-</main>
-{{/content}}
-<script src="/js/signup.js"></script>
+    <input type="password" id="password" name="password">
+  </div>
+  <button type="submit">Sign Up</button>
+</form>
+<script src="/public/js/signup.js"></script>

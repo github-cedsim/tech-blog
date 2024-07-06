@@ -7,16 +7,13 @@ body {
 
 header {
   background-color: #333;
-  color: #FFA500; /* Updated to Orange */
+  color: #fff;
   padding: 1em;
-  text-align: center;
 }
 
 nav ul {
   list-style: none;
   padding: 0;
-  display: flex;
-  justify-content: center;
 }
 
 nav ul li {
@@ -24,16 +21,10 @@ nav ul li {
   margin-right: 1em;
 }
 
-nav ul li a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-}
-
 h1 {
   font-size: 3rem;
   background-color: whitesmoke;
-  color: #FFA500; /* Updated to Orange */
+  color: black;
   padding: 0 10px;
   display: inline-block;
   border-radius: 5px;
@@ -45,34 +36,16 @@ footer {
   color: #fff;
   text-align: center;
   padding: 1em 0;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
-
-label {
-  display: flex;
-  width: 75px;
-  flex-wrap: wrap;
-  color: black;
-  background-color: rgb(157, 156, 156);
 }
 
 .app-title {
   font-size: 3rem;
   background-color: whitesmoke;
-  color: #FFA500; /* Updated to Orange */
+  color: black;
   padding: 0 10px;
   display: inline-block;
   border-radius: 5px;
   box-shadow: 6px 5px grey;
-  width: auto;
-}
-
-.title {
-  text-decoration: none;
-  box-shadow: 6px 5px grey;
-  width: auto;
 }
 
 .btn {
@@ -82,13 +55,14 @@ label {
   width: 100%;
   display: block;
   margin: 5px 0;
-  border-radius: 15px;
-  color: #fff;
+  border-radius: var(--border-radius);
+  color: var(--primary);
   border: none;
   outline: none;
-  background-color: #FFA500; /* Updated to Orange */
+  background-color: rgb(249, 139, 139);
   box-shadow: 3px 3px black;
   transform: translate(-1px, -1px);
+  border-radius: 15px;
 }
 
 .btn:hover {
@@ -99,18 +73,9 @@ label {
   cursor: pointer;
 }
 
-.btn-inline {
-  display: inline;
-}
-
 .navbar {
   width: 100%;
-  position: fixed;
   margin: 20px;
-  background-color: rgba(140, 146, 118, 0.589);
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 3px 3px grey;
 }
 
 .dashcard {
@@ -131,43 +96,10 @@ label {
   padding: 1%;
 }
 
-.card-body2 {
-  padding: 3%;
-  color: var(--primary);
-  background-color: var(--dark);
-  font-size: 1rem;
-  margin: 20px;
-}
-
 .title-hero {
   padding: 3% 4%;
   margin-bottom: 5px;
   background-color: rgba(46, 46, 46, 0.59);
-  color: #FFA500; /* Updated to Orange */
-  border-radius: 5px;
-}
-
-.title-hero p {
-  max-width: 75%;
-}
-
-ul {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  gap: 20px;
-}
-
-div.card {
-  margin: 0 0 20px 0;
-  border: 3px solid black;
-  border-radius: 5px;
-}
-
-.card-header {
   color: black;
-  background-color: rgba(140, 146, 118, 0.589);
-  padding: 1%;
-  border-radius: 5px 5px 0 0;
-  text-decoration: none;
+  border-radius: 5px;
 }
