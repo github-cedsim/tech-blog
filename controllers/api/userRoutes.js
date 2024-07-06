@@ -47,15 +47,11 @@ router.post('/login', async (req, res) => {
 
 // Logout route
 router.post('/logout', (req, res) => {
-  console.log('Logout route hit');
   if (req.session.logged_in) {
-    console.log('Session is active, destroying session');
     req.session.destroy(() => {
-      console.log('Session destroyed');
       res.status(204).end();
     });
   } else {
-    console.log('No active session');
     res.status(404).end();
   }
 });

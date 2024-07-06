@@ -1,8 +1,7 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
-const withAuth = require('../utils/auth'); // Middleware to redirect unauthenticated users
+const { Post, User, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
-// Get all posts for homepage
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -16,16 +15,15 @@ router.get('/', async (req, res) => {
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('homepage', {
+    res.render('home', {
       posts,
-      logged_in: req.session.logged_in, // Pass logged_in to template
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Get single post
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -34,56 +32,41 @@ router.get('/post/:id', async (req, res) => {
           model: User,
           attributes: ['username'],
         },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['username'],
+            },
+          ],
+        },
       ],
     });
 
     const post = postData.get({ plain: true });
 
-    res.render('single-post', {
-      ...post,
-      logged_in: req.session.logged_in, // Pass logged_in to template
+    res.render('post', {
+      post,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Get dashboard
-router.get('/dashboard', withAuth, async (req, res) => {
+router.post('/post/:id/comment', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id, {
-      include: [{ model: Post }],
+    const newComment = await Comment.create({
+      content: req.body.content,
+      post_id: req.params.id,
+      user_id: req.session.user_id,
     });
 
-    const user = userData.get({ plain: true });
-
-    res.render('dashboard', {
-      ...user,
-      logged_in: req.session.logged_in, // Pass logged_in to template
-    });
+    res.status(200).json(newComment);
   } catch (err) {
     res.status(500).json(err);
   }
-});
-
-// Login route
-router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('login');
-});
-
-// Signup route
-router.get('/signup', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('signup');
 });
 
 module.exports = router;

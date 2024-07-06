@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const signupForm = document.getElementById('signup-form');
+document.addEventListener('DOMContentLoaded', () => {
+  const signupForm = document.querySelector('#signup-form');
   if (signupForm) {
     signupForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
+      const username = document.querySelector('#username').value.trim();
+      const password = document.querySelector('#password').value.trim();
 
       if (username && password) {
         const response = await fetch('/api/users', {
