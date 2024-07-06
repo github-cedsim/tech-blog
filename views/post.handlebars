@@ -1,0 +1,49 @@
+{{!-- Extend the main layout --}}
+{{> main }}
+
+<div class="container">
+  <div class="card my-3">
+    <div class="card-body">
+      <h5 class="card-title">{{post.title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Posted by {{post.user.username}} on {{post.createdAt}}</h6>
+      <p class="card-text">{{post.content}}</p>
+    </div>
+  </div>
+  <div class="comments">
+    <h5>Comments</h5>
+    {{#each post.comments}}
+      <div class="comment my-2">
+        <h6>{{this.user.username}} on {{this.createdAt}}</h6>
+        <p>{{this.content}}</p>
+      </div>
+    {{/each}}
+  </div>
+  {{#if logged_in}}
+    <form id="comment-form">
+      <textarea id="comment-content" rows="4" class="form-control my-2"></textarea>
+      <button type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+  {{/if}}
+</div>
+
+<script>
+  document.getElementById('comment-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const content = document.getElementById('comment-content').value.trim();
+    const postId = {{post.id}};
+
+    if (content) {
+      const response = await fetch(`/api/comments`, {
+        method: 'POST',
+        body: JSON.stringify({ content, post_id: postId }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (response.ok) {
+        document.location.reload();
+      } else {
+        alert('Failed to add comment');
+      }
+    }
+  });
+</script>
