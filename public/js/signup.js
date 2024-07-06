@@ -1,3 +1,5 @@
+// public/js/signup.js
+
 const signupFormHandler = async (event) => {
     event.preventDefault();
   
@@ -12,12 +14,11 @@ const signupFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        alert('Signup successful! Redirecting to login...');
-        document.location.replace('/login');
+        document.location.replace('/dashboard');
       } else {
         alert('Failed to sign up.');
       }
     }
   };
   
-  document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+  document.querySelector('#signup-form').addEventListener('submit', signupFormHandler);

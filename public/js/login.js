@@ -1,3 +1,5 @@
+// public/js/login.js
+
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
@@ -12,12 +14,11 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        alert('Login successful!');
-        document.location.replace('/');
+        document.location.replace('/dashboard');
       } else {
         alert('Failed to log in.');
       }
     }
   };
   
-  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+  document.querySelector('#login-form').addEventListener('submit', loginFormHandler);

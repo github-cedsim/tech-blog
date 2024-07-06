@@ -1,10 +1,19 @@
-const router = require('express').Router();
-const { Post, User, Comment } = require('../models');
+// controllers/homeRoutes.js
 
+const router = require('express').Router();
+const { Post, User } = require('../models');
+const withAuth = require('../utils/auth');
+
+// Homepage route
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [{ model: User, attributes: ['username'] }],
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -18,22 +27,19 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/post/:id', async (req, res) => {
+// Dashboard route
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id, {
-      include: [
-        { model: User, attributes: ['username'] },
-        {
-          model: Comment,
-          include: [User],
-        },
-      ],
+    const postData = await Post.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
     });
 
-    const post = postData.get({ plain: true });
+    const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('post', {
-      ...post,
+    res.render('dashboard', {
+      posts,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -41,6 +47,7 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
+// Login route
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -50,6 +57,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Signup route
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
