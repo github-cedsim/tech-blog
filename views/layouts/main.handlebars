@@ -1,12 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Tech Blog</title>
- <link rel="shortcut icon" href="/public/images/android-chrome-192x192.png" type="image/x-icon">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <title>{{title}} | Tech Blog</title>
   <link rel="stylesheet" href="/public/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body class="">
@@ -18,9 +18,12 @@
       {{#if loggedIn}}
       <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
       {{/if}}
+      {{#unless loggedIn}}
       <li class="li-inline nav-item"><a href="/login">Login</a></li>
+      {{/unless}}
     </ul>
-  
+  </nav>
+
   <header class="title-hero py-1 bg-slate-400 opacity-25">
     <h1 class="app-title"><a href="/">The Tech Blog</a></h1>
   </header>
@@ -30,11 +33,12 @@
   </main>
 
   <footer class="flex-row justify-center">
-    
+    <p>&copy; 2024 The Tech Blog</p>
   </footer>
+
+  {{#if loggedIn}}
+  <script src="/public/js/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
-{{#if loggedIn}}
-<script src="/public/js/logout.js"></script>
-{{/if}}

@@ -1,28 +1,29 @@
-<div class="card">
-  <div class="card-header  flex-row justify-space-between">
-    <h2>
-      <a href="/post/{{post.id}}">
-        <div class="col-8">{{post.postTitle}}</div>
-      </a>
-    </h2>
-    <div class="col-3">By {{post.user.username}} on {{format_date post.dateCreated}}
-    </div>
-  </div>  
-  <p class="card-body">
-   {{post.postContent}}
-  </p>
+<div class="post-card">
+  <div class="card-header">
+    <h2>{{title}}</h2>
+    <p>by {{user.username}} on {{createdAt}}</p>
+  </div>
+  <div class="card-body">
+    <p>{{content}}</p>
+  </div>
 </div>
-<input type="hidden" name="post-id" value="{{post.id}}"/>
 
-<div class="card">
-  <div class="card-header"></div>
-  <form class="card-body" id="new-comment-form">
-    
-    <p class="form-label">Comment:</p>
-    <textarea class="form-input" id="comment-body" name="comment-body"></textarea>
-    <button type="submit" class="btn btn-primary">Submit:</button>
+<div class="comments-section">
+  <h3>Comments</h3>
+  {{#each comments}}
+  <div class="comment">
+    <p><strong>{{user.username}}</strong> on {{createdAt}}:</p>
+    <p>{{comment_text}}</p>
+  </div>
+  {{/each}}
+  {{#if loggedIn}}
+  <form class="comment-form">
+    <textarea id="comment-text" placeholder="Add a comment" required></textarea>
+    <input type="hidden" id="post-id" value="{{id}}">
+    <button type="submit" class="btn">Submit</button>
   </form>
-{{> comments post.comments}}
+  {{else}}
+  <p>You need to <a href="/login">log in</a> to comment.</p>
+  {{/if}}
 </div>
-
 <script src="/public/js/comment.js"></script>
