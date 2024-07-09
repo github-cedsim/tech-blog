@@ -13,7 +13,7 @@ A CMS-style blog site where developers can publish their blog posts and comment 
 - [Technologies Used](#technologies-used)
 - [License](#license)
 - [Contributing](#contributing)
-- [Questions](#questions)
+
 
 ## Description
 
