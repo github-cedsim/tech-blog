@@ -1,6 +1,18 @@
-{{#each posts}}
-  <div class="post">
-    <h2><a href="/post/{{this.id}}">{{this.title}}</a></h2>
-    <p>Posted by {{this.user.username}} on {{this.createdAt}}</p>
+{{!-- Extend the main layout --}}
+{{#extends 'main'}}
+
+{{!-- Define the content block --}}
+{{#block 'content'}}
+  <div class="container">
+    {{#each posts}}
+      <div class="card my-3">
+        <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Posted by {{this.user.username}} on {{this.createdAt}}</h6>
+          <p class="card-text">{{this.content}}</p>
+          <a href="/post/{{this.id}}" class="card-link">Read More</a>
+        </div>
+      </div>
+    {{/each}}
   </div>
-{{/each}}
+{{/block}}

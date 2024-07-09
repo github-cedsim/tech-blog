@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loginForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      const username = document.querySelector('#username-login').value.trim();
-      const password = document.querySelector('#password-login').value.trim();
+      const username = document.querySelector('#username').value.trim();
+      const password = document.querySelector('#password').value.trim();
 
       if (username && password) {
         const response = await fetch('/api/users/login', {
@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (response.ok) {
-          document.location.replace('/dashboard');
+          document.location.replace('/');
         } else {
-          alert('Failed to log in');
+          alert('Failed to log in.');
         }
       }
     });

@@ -1,5 +1,13 @@
-<form id="signup-form">
-  <input type="text" id="username-signup" placeholder="Username" required>
-  <input type="password" id="password-signup" placeholder="Password" required>
-  <button type="submit">Sign Up</button>
-</form>
+{{#extends 'main'}}
+
+{{#block 'content'}}
+  <div class="signup-container">
+    <form id="signup-form">
+      <h2>Signup</h2>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+  <script src="/js/signup.js"></script>
+{{/block}}
