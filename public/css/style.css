@@ -1,95 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #e8ecf1;
+    color: #333;
 }
 
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 0;
-  text-align: center;
+label {
+    display: flex;
+    width: 75px;
+    flex-wrap: wrap;
+    color: #fff;
+    background-color: #4a5568;
+    border-radius: 8px;
+    padding: 4px;
+    margin: 5px 0;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  align-items: center;
+.app-title {
+    font-size: 2.5rem;
+    background-color: #fff;
+    color: #1a202c;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: auto;
+    margin: 10px 0;
+    text-align: center;
 }
 
-nav h1 {
-  margin: 0;
-  padding: 0;
-  font-size: 24px;
-  color: #fff;
+.title {
+    text-decoration: none;
+    color: #1a202c;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: auto;
 }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  padding: 5px 10px;
+.btn {
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: #2b6cb0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
-nav a:hover {
-  background-color: #555;
-  border-radius: 5px;
+.btn:hover {
+    background-color: #2c5282;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
-form {
-  display: inline;
+.btn-inline {
+    display: inline;
 }
 
-main {
-  padding: 20px;
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1a202c;
+    color: #e2e8f0; /* Brighter color */
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: center; /* Center the navbar content */
 }
 
-#post-list, #comments {
-  margin-top: 20px;
+.dashcard {
+    margin: 120px 20px 20px 20px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: auto;
 }
 
-.post, .comment {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.card-header {
+    color: #fff;
+    background-color: #2b6cb0;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
 }
 
-textarea {
-  width: 100%;
-  height: 100px;
-  margin-top: 10px;
+.card-body {
+    padding: 15px;
 }
 
-button.btn {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
+.card-body2 {
+    padding: 15px;
+    color: #2b6cb0;
+    background-color: #edf2f7;
+    font-size: 1rem;
+    margin: 20px;
 }
 
-button.btn:hover {
-  background-color: #555;
+.title-hero {
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: rgba(26, 32, 44, 0.7);
+    color: #fff;
+    border-radius: 8px;
 }
 
-/* New styles for posts and comments */
-.post {
-  border-left: 5px solid #333;
-  padding-left: 15px;
+.title-hero p {
+    max-width: 70%;
 }
 
-.comment {
-  border-left: 5px solid #666;
-  padding-left: 15px;
+ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
 }
 
-.post h3, .comment p {
-  margin: 0 0 10px;
+div.card {
+    margin: 0 0 20px 0;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.card-header {
+    color: #fff;
+    background-color: #2b6cb0;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
 }

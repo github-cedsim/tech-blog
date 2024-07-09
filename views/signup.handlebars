@@ -1,13 +1,19 @@
-{{#extends 'main'}}
+{{!-- Extend the main layout --}}
+{{#extends 'layouts/main'}}
 
+{{!-- Define the content block --}}
 {{#block 'content'}}
-  <div class="signup-container">
-    <form id="signup-form">
-      <h2>Signup</h2>
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Signup</button>
-    </form>
+  <div class="container">
+    {{#each posts}}
+      <div class="card my-3">
+        <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Posted by {{this.user.username}} on {{this.createdAt}}</h6>
+          <p class="card-text">{{this.content}}</p>
+          <a href="/post/{{this.id}}" class="card-link">Read More</a>
+        </div>
+      </div>
+    {{/each}}
   </div>
-  <script src="/js/signup.js"></script>
+  <script src="/js/home.js"></script>
 {{/block}}

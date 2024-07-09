@@ -1,31 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const commentForm = document.querySelector('#comment-form');
-  
-  if (commentForm) {
-    commentForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      
-      const content = document.querySelector('#comment-content').value.trim();
-      const postId = window.location.pathname.split('/').pop();
-      
-      if (content) {
-        const response = await fetch(`/api/comments`, {
-          method: 'POST',
-          body: JSON.stringify({
-            content,
-            post_id: postId,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+const postId = document.querySelector('input[name="post-id"]').value;
 
-        if (response.ok) {
-          document.location.reload();
-        } else {
-          alert('Failed to add comment');
-        }
+console.log("testing");
+console.log(postId);
+
+const commentFormHandler = async (event) => {
+  event.preventDefault();
+
+  const commentContent = document.querySelector('textarea[name="comment-body"]').value;
+  console.log(commentContent);
+
+  if (commentContent) {
+    const response = await fetch('/api/comment', {
+      method: 'POST',
+      body: JSON.stringify({
+        postId,
+        commentContent
+      }),
+      headers: {
+        'Content-Type': 'application/json'
       }
     });
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
   }
-});
+};
+
+document
+  .querySelector('#new-comment-form')
+  .addEventListener('submit', commentFormHandler);
