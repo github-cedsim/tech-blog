@@ -31,7 +31,7 @@ label {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: auto;
-    margin: 10px 0;
+    margin: 10px auto;
     text-align: center;
 }
 
@@ -79,11 +79,31 @@ label {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     display: flex;
-    justify-content: center; /* Center the navbar content */
+    justify-content: space-between; /* Adjust to space out the nav items */
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li a {
+    color: #e2e8f0; /* Brighter color for nav links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-content {
+    margin-top: 80px; /* Adjust to provide space for the fixed navbar */
+    padding: 20px;
 }
 
 .dashcard {
-    margin: 120px 20px 20px 20px;
+    margin: 20px;
     border: 1px solid #cbd5e0;
     border-radius: 8px;
     background-color: #fff;
@@ -132,7 +152,7 @@ ul {
 }
 
 div.card {
-    margin: 0 0 20px 0;
+    margin: 20px 0;
     border: 1px solid #cbd5e0;
     border-radius: 8px;
     background-color: #fff;
