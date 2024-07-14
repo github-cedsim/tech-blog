@@ -1,22 +1,20 @@
-{{#extends 'main'}}
+<h1>{{post.title}}</h1>
+<p>{{post.content}}</p>
+<p>Posted by {{post.user.username}} on {{post.createdAt}}</p>
 
-{{#block 'content'}}
-  <h1>{{post.title}}</h1>
-  <p>{{post.content}}</p>
-  <p>Posted by {{post.user.username}} on {{post.createdAt}}</p>
+<h2>Comments</h2>
+{{#each post.comments}}
+  <div class="comment">
+    <p>{{this.content}}</p>
+    <p>Posted by {{this.user.username}} on {{this.createdAt}}</p>
+  </div>
+{{/each}}
 
-  <h2>Comments</h2>
-  {{#each post.comments}}
-    <div class="comment">
-      <p>{{this.content}}</p>
-      <p>Posted by {{this.user.username}} on {{this.createdAt}}</p>
-    </div>
-  {{/each}}
+<h2>Add a Comment</h2>
+<form id="comment-form">
+  <input type="hidden" name="post-id" value="{{post.id}}">
+  <textarea name="comment-body" placeholder="Your comment" required></textarea>
+  <button type="submit">Submit</button>
+</form>
 
-  <h2>Add a Comment</h2>
-  <form id="comment-form">
-    <textarea id="comment-content" placeholder="Your comment" required></textarea>
-    <button type="submit">Submit</button>
-  </form>
-  <script src="/js/comment.js"></script>
-{{/block}}
+<script src="/js/comment.js"></script>
