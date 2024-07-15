@@ -52,7 +52,7 @@ The Tech Blog is a platform for developers to write, publish, and interact with 
 
 ## Screenshots
 
-![Tech Blog](![image](https://github.com/user-attachments/assets/49ce821b-093b-42ff-a4ef-e9060253fec4)
+![Tech Blog](https://github.com/user-attachments/assets/49ce821b-093b-42ff-a4ef-e9060253fec4)
 )
 
 ## Features
