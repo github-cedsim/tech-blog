@@ -1,15 +1,22 @@
-<h1>Login</h1>
-  <form class="login-form">
-    <div>
-      <label for="username-login">Username:</label>
-      <input type="text" id="username-login" name="username-login" required>
-    </div>
-    <div>
-      <label for="password-login">Password:</label>
-      <input type="password" id="password-login" name="password-login" required>
-    <br>
-    <button type="submit">Log In</button>
-    <br> <a href="/signup">Sign Up Instead</a>
-  </form>
+{{> header}}
 
-  <script src="../js/signup.js"></script>
+<main>
+  <section>
+    <h1>Login</h1>
+    <form id="login-form" class="login-form">
+      <div>
+        <label for="username-login">Username:</label>
+        <input type="text" id="username-login" name="username">
+      </div>
+      <div>
+        <label for="password-login">Password:</label>
+        <input type="password" id="password-login" name="password">
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+</main>
+
+{{> footer}}
+
+<script src="/js/login.js"></script>

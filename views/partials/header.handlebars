@@ -1,13 +1,13 @@
-<header>
-  <nav>
-    <a href="/"></a>
-    {{#if logged_in}}
-      <a href="/dashboard">Dashboard</a>
-      <form id="logout-form" action="/api/users/logout" method="POST">
-        <button type="submit">Logout</button>
-      </form>
-    //{{else}}
-      <a href="/login"></a>
+<nav class="navbar">
+  <ul class="flex-row">
+    <li class="nav-item"><a href="/">Home</a></li>
+    {{#if loggedIn}}
+    <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
+    <li class="nav-item"><a href="#" id="logout-link">Logout</a></li>
+    {{else}}
+    <li class="nav-item"><a href="/login">Login</a></li>
+    <li class="nav-item"><a href="/signup">Signup</a></li>
     {{/if}}
-  </nav>
-</header>
+  </ul>
+  <h1 class="app-title"><a href="/">The Tech Blog</a></h1>
+</nav>

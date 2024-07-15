@@ -1,20 +1,25 @@
-<h1>{{post.title}}</h1>
-<p>{{post.content}}</p>
-<p>Posted by {{post.user.username}} on {{post.createdAt}}</p>
+{{!-- views/post.handlebars --}}
+{{> header}}
 
-<h2>Comments</h2>
-{{#each post.comments}}
-  <div class="comment">
-    <p>{{this.content}}</p>
-    <p>Posted by {{this.user.username}} on {{this.createdAt}}</p>
-  </div>
-{{/each}}
+<div class="container">
+  <h1>{{post.title}}</h1>
+  <p>{{post.content}}</p>
+  <p>Posted by {{post.user.username}} on {{post.createdAt}}</p>
 
-<h2>Add a Comment</h2>
-<form id="comment-form">
-  <input type="hidden" name="post-id" value="{{post.id}}">
-  <textarea name="comment-body" placeholder="Your comment" required></textarea>
-  <button type="submit">Submit</button>
-</form>
+  <h2>Comments</h2>
+  {{#each post.comments}}
+    <div class="comment">
+      <p>{{this.content}}</p>
+      <p>Posted by {{this.user.username}} on {{this.createdAt}}</p>
+    </div>
+  {{/each}}
+
+  <h2>Add a Comment</h2>
+  <form id="comment-form">
+    <textarea id="comment-content" placeholder="Your comment" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</div>
 
 <script src="/js/comment.js"></script>
+{{> footer}}

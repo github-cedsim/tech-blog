@@ -1,9 +1,7 @@
-{{!-- Extend the main layout --}}
 {{> header}}
-
 <div class="container">
   {{#each posts}}
-    <div class="card my-3">
+    <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{this.title}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">Posted by {{this.user.username}} on {{this.createdAt}}</h6>
@@ -13,5 +11,4 @@
     </div>
   {{/each}}
 </div>
-
 {{> footer}}

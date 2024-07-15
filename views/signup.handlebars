@@ -1,43 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup | Tech Blog</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <nav class="navbar">
-    <ul class="flex-row">
-      <li class="nav-item"><a href="/">Home</a></li>
-      {{#if loggedIn}}
-        <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
-        <li class="nav-item"><a href="#" id="logout-link">Logout</a></li>
-      {{else}}
-        <li class="nav-item"><a href="/login">Login</a></li>
-        <li class="nav-item"><a href="/signup">Signup</a></li>
-      {{/if}}
-    </ul>
-    <h1 class="app-title"><a href="/">The Tech Blog</a></h1>
-  </nav>
-  <main class="main-content">
-    <h2>Signup</h2>
-    <form class="signup-form">
-      <div>
-        <label for="username-signup">Username:</label>
-        <input type="text" id="username-signup" name="username-signup" required>
-      </div>
-      <div>
-        <label for="password-signup">Password:</label>
-        <input type="password" id="password-signup" name="password-signup" required>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
-    <a href="/login">Log In Instead</a>
-  </main>
-  <footer class="flex-row justify-center">
-    <!-- Footer content can go here -->
-  </footer>
-  <script src="/js/signup.js"></script>
-</body>
-</html>
+{{> header}}
+<div class="container">
+  <form class="signup-form">
+    <div>
+      <label for="username-signup">Username</label>
+      <input type="text" id="username-signup" required>
+    </div>
+    <div>
+      <label for="password-signup">Password</label>
+      <input type="password" id="password-signup" required>
+    </div>
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+<script src="/js/signup.js"></script>
+{{> footer}}

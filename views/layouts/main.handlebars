@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Tech Blog</title>
-  <link rel="shortcut icon" href="/public/images/android-chrome-192x192.png" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <title>Tech Blog</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
   <nav class="navbar">
-    <ul class="flex-row">
-      <li class="nav-item"><a href="/">Home</a></li>
+    <ul>
+      <li><a href="/">Home</a></li>
       {{#if loggedIn}}
-        <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
-        <li class="nav-item"><a href="#" id="logout-link">Logout</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="#" id="logout-link">Logout</a></li>
       {{else}}
-        <li class="nav-item"><a href="/login">Login</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Signup</a></li>
       {{/if}}
-      <li class="nav-item"><a href="/signup">Signup</a></li>
     </ul>
-    <h1 class="app-title"><a href="/">The Tech Blog</a></h1>
   </nav>
-  <main class="main-content">
-    {{{body}}}
-  </main>
-  <footer class="flex-row justify-center">
-    <!-- Footer content can go here -->
-  </footer>
+  {{{body}}}
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
+
 </html>
